@@ -1,0 +1,15 @@
+.table {
+    @apply w-full text-left;
+}
+.table th {
+    @apply font-medium px-5 py-3;
+}
+.table td {
+    @apply px-5 py-3;
+}
+.table.table--sm th {
+    @apply px-4 py-2;
+}
+.table.table--sm td {
+    @apply px-4 py-2;
+}

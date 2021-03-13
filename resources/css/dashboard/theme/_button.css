@@ -1,0 +1,15 @@
+.button {
+    @apply py-2 px-3 rounded-md font-medium cursor-pointer;
+}
+.button:focus {
+    @apply outline-none ;
+}
+.button:not(button) {
+    @apply text-center;
+}
+.button.button--sm {
+    @apply py-1 px-2;
+}
+.button.button--lg {
+    @apply py-3 px-4;
+}
