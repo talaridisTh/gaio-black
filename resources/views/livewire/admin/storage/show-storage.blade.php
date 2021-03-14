@@ -10,7 +10,7 @@
                        type="checkbox"/>
             </x-table.table-th>
 
-            <x-table.table-th >
+            <x-table.table-th>
                 <span wire:click="sortBy('name')"
                       class="text-gray-300 flex cursor-pointer">
                     Ονομα
@@ -22,7 +22,7 @@
 
             </x-table.table-th>
 
-            <x-table.table-th >
+            <x-table.table-th>
                     <span wire:click="sortBy('mm')"
                           class="text-gray-300 flex cursor-pointer">
                         Μονάδα μέτρησης
@@ -82,55 +82,58 @@
                 </a>
 
             </div>
-            @foreach($storage as $item)
-                <tr class="dark:bg-gray-800 bg-white p-5 dark:text-gray-300 border @if($loop->first)border-t-2 @endif border-l-0 border-r-0 border-gray-200">
-                    <td class="px-16 py-2 flex flex-row items-center">
-                        <div class="p-thick mt-1">
-                            <input @click="checkedMainInput()"
-                                   id="checkbox{{$loop->index+1}}"
-                                   type="checkbox"/>
-                        </div>
-                    </td>
-                    <td>
-                    <span x-on:click="$dispatch('accordeon',{{$item}})"
-                          class="text-center ml-2 font-semibold">{{$item->name}}</span>
-                    </td>
-                    <td class="px-16 py-2">
-                        <span class="text-center ml-2 font-semibold">{{$item->mm}}</span>
-                    </td>
-                    <td class="px-16 py-2">
-                        <span class="text-center ml-2 font-semibold">{{$item->sku}}</span>
-                    </td>
-                    <td class="px-16 py-2">
-                        <span class="text-center ml-2 font-semibold">{{$item->quantity}}</span>
-                    </td>
-                    <td class="px-16 py-2">
-                        <span>{{$item->created_at->format('d/m/Y')}}</span>
-                    </td>
-                    <td class="px-16 py-2">
-              <span class="">
-                  {{$item->updated_at->format('d/m/Y')}}
-              </span>
-                    </td>
-                    <td class="px-16 py-2">
-              <span class="">
-              </span>
-                    </td>
-                </tr>
 
-                <tr x-data="{isOpen:false}"
-                    x-show="isOpen"
-                    @click.away="isOpen=false"
-                    @accordeon.window="event.detail.slug==$el.id?isOpen=!isOpen:''"
-                    id="{{$item->slug}}"
-                    class="fold">
-                    <td colspan="8">
-                        <div class="flex flex-col items-start mx-36 p-5">
-                            <span class="dark:text-gray-300 text-center ml-2 font-semibold">{{$item->description}}</span>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
+                @foreach($storage as $item)
+                    <x-table.table-tr wire:key="{{ $item->id }}"  class="border border-l-0 border-r-0 border-gray-200 @if($loop->first)border-t-2 @endif">
+                        <x-table.table-td class="flex  justify-center">
+                            <label for="checkbox{{$loop->index+1}}"
+                                   class="p-thick mt-1">
+                                <input @click="checkedMainInput()"
+                                       id="checkbox{{$loop->index+1}}"
+                                       type="checkbox"/>
+                            </label>
+                        </x-table.table-td>
+                        <x-table.table-td>
+                    <span x-on:click="$dispatch('accordeon',{{$item}},console.log({{$item}}))"
+                          class="cursor-pointer text-center ml-2 font-semibold">{{$item->name}}</span>
+                        </x-table.table-td>
+                        <x-table.table-td>
+                            <span class="text-center ml-2 font-semibold">{{$item->mm}}</span>
+                        </x-table.table-td>
+                        <x-table.table-td>
+                            <span class="text-center ml-2 font-semibold">{{$item->sku}}</span>
+                        </x-table.table-td>
+                        <x-table.table-td>
+                            <span class="text-center ml-2 font-semibold">{{$item->quantity}}</span>
+                        </x-table.table-td>
+                        <x-table.table-td>
+                            <span>{{$item->created_at->format('d/m/Y')}}</span>
+                        </x-table.table-td>
+                        <x-table.table-td>
+                      <span class="">
+                      {{$item->updated_at->format('d/m/Y')}}
+                  </span>
+                        </x-table.table-td>
+                        <x-table.table-td>
+                      <span class="">
+                      </span>
+                        </x-table.table-td>
+                    </x-table.table-tr>
+
+                    <x-table.table-tr x-data="{isOpen:false}"
+                                      x-show="isOpen"
+                                      @click.away="isOpen=false"
+                                      @accordeon.window="event.detail.slug==$el.id?isOpen=true:''"
+                                      id="{{$item->slug}}"
+                                      class="fold">
+                        <x-table.table-td colspan="8">
+                            <div class="flex flex-col items-start mx-36 p-5">
+                                <span class="dark:text-gray-300 text-center ml-2 font-semibold">{{$item->description}}</span>
+                            </div>
+                        </x-table.table-td>
+                    </x-table.table-tr>
+                @endforeach
+
 
         </x-slot>
 

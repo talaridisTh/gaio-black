@@ -13,8 +13,7 @@ class CreateUser extends Component {
      *
      * @return View|string
      */
-
-    public $users ;
+    public $users;
     public $email;
 
     protected $rules = [
@@ -23,13 +22,14 @@ class CreateUser extends Component {
 
     public function mount()
     {
-       $this->users= User::pluck("first_name");
+        $this->users = User::pluck("first_name");
     }
 
     public function submit()
     {
-       $this->validate();
+        $this->validate();
     }
+
     public function render()
     {
         return view('livewire.admin.user.create-user');

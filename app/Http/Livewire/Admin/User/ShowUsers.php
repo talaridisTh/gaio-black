@@ -10,16 +10,13 @@ use Livewire\WithPagination;
 
 class ShowUsers extends Component {
 
-    use WithPagination, WithSorting ,WithSeaching;
+    use WithPagination, WithSorting, WithSeaching;
 
     public $sortBy = "first_name";
     public $entries = 10;
     public $queryString = [
         'search' => ['except' => ''],
     ];
-
-
-
 
     public function render()
     {

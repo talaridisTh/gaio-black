@@ -10,7 +10,8 @@ use Livewire\WithPagination;
 
 class ShowStorage extends Component {
 
-    use WithPagination, WithSorting ,WithSeaching;
+    use WithPagination, WithSorting, WithSeaching;
+
 
     public $sortBy = "name";
     public $entries = 10;
@@ -20,7 +21,7 @@ class ShowStorage extends Component {
 
     public function render()
     {
-        return view('livewire.admin.storage.show-storage',[
+        return view('livewire.admin.storage.show-storage', [
             "storage" => Storage::where('name', 'LIKE', '%' . $this->search . '%')->orderBy($this->sortBy, $this->sortDirection)->paginate($this->entries)
         ]);
     }

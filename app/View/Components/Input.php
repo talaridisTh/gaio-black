@@ -30,7 +30,6 @@ class Input extends Component {
         $this->type = $type;
         $this->user = $user;
 
-
     }
 
     public function render()

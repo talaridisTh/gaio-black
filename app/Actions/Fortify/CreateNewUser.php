@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 
-class CreateNewUser implements CreatesNewUsers
-{
+class CreateNewUser implements CreatesNewUsers {
+
     use PasswordValidationRules;
 
     /**
      * Create a newly registered user.
      *
-     * @param  array  $input
+     * @param array $input
      * @return User
      */
     public function create(array $input)
@@ -29,7 +29,6 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-
 
         return DB::transaction(function () use ($input) {
             return tap(User::create([
@@ -53,8 +52,9 @@ class CreateNewUser implements CreatesNewUsers
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $user->first_name, 2)[0]."'s Team",
+            'name' => explode(' ', $user->first_name, 2)[0] . "'s Team",
             'personal_team' => true,
         ]));
     }
+
 }

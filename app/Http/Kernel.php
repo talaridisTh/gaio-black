@@ -26,8 +26,8 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Laravel\Jetstream\Http\Middleware\AuthenticateSession;
 
-class Kernel extends HttpKernel
-{
+class Kernel extends HttpKernel {
+
     /**
      * The application's global HTTP middleware stack.
      *
@@ -60,7 +60,6 @@ class Kernel extends HttpKernel
             VerifyCsrfToken::class,
             SubstituteBindings::class,
         ],
-
         'api' => [
             'throttle:api',
             SubstituteBindings::class,
@@ -85,4 +84,5 @@ class Kernel extends HttpKernel
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
     ];
+
 }

@@ -8,8 +8,8 @@ use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use Laravel\Jetstream\Team as JetstreamTeam;
 
-class Team extends JetstreamTeam
-{
+class Team extends JetstreamTeam {
+
     use HasFactory;
 
     /**
@@ -41,4 +41,5 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
 }

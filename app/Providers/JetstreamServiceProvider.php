@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
 
-class JetstreamServiceProvider extends ServiceProvider
-{
+class JetstreamServiceProvider extends ServiceProvider {
+
     /**
      * Register any application services.
      *
@@ -35,7 +35,6 @@ class JetstreamServiceProvider extends ServiceProvider
     {
         $this->configurePermissions();
         $this->configureRoutes();
-
         Jetstream::createTeamsUsing(CreateTeam::class);
         Jetstream::updateTeamNamesUsing(UpdateTeamName::class);
         Jetstream::addTeamMembersUsing(AddTeamMember::class);
@@ -54,28 +53,28 @@ class JetstreamServiceProvider extends ServiceProvider
     protected function configurePermissions()
     {
         Jetstream::defaultApiTokenPermissions(['read']);
-
         Jetstream::role('admin', __('Administrator'), [
             'create',
             'read',
             'update',
             'delete',
         ])->description(__('Administrator users can perform any action.'));
-
         Jetstream::role('editor', __('Editor'), [
             'read',
             'create',
             'update',
         ])->description(__('Editor users have the ability to read, create, and update.'));
     }
+
     protected function configureRoutes()
     {
-            Route::group([
-                'namespace' => 'Laravel\Jetstream\Http\Controllers',
-                'domain' => config('jetstream.domain', null),
-                'prefix' => config('jetstream.prefix', config('jetstream.path')),
-            ], function () {
-                $this->loadRoutesFrom(base_path('routes/jetstream.php'));
-            });
+        Route::group([
+            'namespace' => 'Laravel\Jetstream\Http\Controllers',
+            'domain' => config('jetstream.domain', null),
+            'prefix' => config('jetstream.prefix', config('jetstream.path')),
+        ], function () {
+            $this->loadRoutesFrom(base_path('routes/jetstream.php'));
+        });
     }
+
 }

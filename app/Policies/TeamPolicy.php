@@ -6,8 +6,8 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class TeamPolicy
-{
+class TeamPolicy {
+
     use HandlesAuthorization;
 
     /**
@@ -103,4 +103,5 @@ class TeamPolicy
     {
         return $user->ownsTeam($team);
     }
+
 }

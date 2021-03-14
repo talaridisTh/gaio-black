@@ -11,40 +11,35 @@ use Laravel\Jetstream\Events\TeamMemberAdded;
 use Laravel\Jetstream\Jetstream;
 use Laravel\Jetstream\Rules\Role;
 
-class AddTeamMember implements AddsTeamMembers
-{
+class AddTeamMember implements AddsTeamMembers {
+
     /**
      * Add a new team member to the given team.
      *
-     * @param  mixed  $user
-     * @param  mixed  $team
-     * @param  string  $email
-     * @param  string|null  $role
+     * @param mixed $user
+     * @param mixed $team
+     * @param string $email
+     * @param string|null $role
      * @return void
      */
     public function add($user, $team, string $email, string $role = null)
     {
         Gate::forUser($user)->authorize('addTeamMember', $team);
-
         $this->validate($team, $email, $role);
-
         $newTeamMember = Jetstream::findUserByEmailOrFail($email);
-
         AddingTeamMember::dispatch($team, $newTeamMember);
-
         $team->users()->attach(
             $newTeamMember, ['role' => $role]
         );
-
         TeamMemberAdded::dispatch($team, $newTeamMember);
     }
 
     /**
      * Validate the add member operation.
      *
-     * @param  mixed  $team
-     * @param  string  $email
-     * @param  string|null  $role
+     * @param mixed $team
+     * @param string $email
+     * @param string|null $role
      * @return void
      */
     protected function validate($team, string $email, ?string $role)
@@ -69,16 +64,16 @@ class AddTeamMember implements AddsTeamMembers
         return array_filter([
             'email' => ['required', 'email', 'exists:users'],
             'role' => Jetstream::hasRoles()
-                            ? ['required', 'string', new Role]
-                            : null,
+                ? ['required', 'string', new Role]
+                : null,
         ]);
     }
 
     /**
      * Ensure that the user is not already on the team.
      *
-     * @param  mixed  $team
-     * @param  string  $email
+     * @param mixed $team
+     * @param string $email
      * @return Closure
      */
     protected function ensureUserIsNotAlreadyOnTeam($team, string $email)
@@ -91,4 +86,5 @@ class AddTeamMember implements AddsTeamMembers
             );
         };
     }
+
 }
