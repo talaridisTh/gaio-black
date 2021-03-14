@@ -134,7 +134,6 @@
                     </x-table.table-tr>
                 @endforeach
 
-
         </x-slot>
 
     </x-table.table>
