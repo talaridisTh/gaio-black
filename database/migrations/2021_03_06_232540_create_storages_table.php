@@ -20,7 +20,7 @@ class CreateStoragesTable extends Migration
             $table->text("description")->nullable();
             $table->integer("sku");
             $table->string("mm");
-            $table->integer("price");
+            $table->float("price");
             $table->integer("quantity")->default(0);
             $table->timestamps();
         });

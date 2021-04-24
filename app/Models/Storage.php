@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Storage extends Model {
 
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function information()
+    {
+        return $this->belongsToMany(Information::class)->withTimestamps();
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
 }

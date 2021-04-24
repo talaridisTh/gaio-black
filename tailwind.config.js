@@ -52,6 +52,18 @@ module.exports = {
                     40: '#203FAD',
                     41: '#BBC8FD'
                 },
+                'scooter': {
+                    '50': '#f2fdff',
+                    '100': '#e6fbff',
+                    '200': '#bff6ff',
+                    '300': '#99f0ff',
+                    '400': '#4de4ff',
+                    '500': '#00d9ff',
+                    '600': '#00c3e6',
+                    '700': '#00a3bf',
+                    '800': '#008299',
+                    '900': '#006a7d'
+                }
             },
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
@@ -60,6 +72,7 @@ module.exports = {
                 center: true
             },
             maxWidth: {
+                "17rem": "17rem",
                 '1/4': '25%',
                 '1/2': '50%',
                 '3/4': '75%'
@@ -70,6 +83,13 @@ module.exports = {
                 'lg': '1024px',
                 'xl': '1280px',
                 'xxl': '1600px'
+            },
+            width:{
+             "54rem":"54rem"
+            },
+            flex: {
+                '2': '2 2 0%',
+                '3': '3 3 0%',
             }
         }
     },
@@ -79,5 +99,5 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('tailwind-scrollbar'),],
 };

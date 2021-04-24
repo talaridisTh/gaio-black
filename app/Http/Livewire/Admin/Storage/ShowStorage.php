@@ -19,6 +19,11 @@ class ShowStorage extends Component {
         'search' => ['except' => ''],
     ];
 
+    public function deleteStorage( $storage)
+    {
+        Storage::find($storage)->delete();
+    }
+
     public function render()
     {
         return view('livewire.admin.storage.show-storage', [

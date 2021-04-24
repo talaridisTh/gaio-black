@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Information;
+use App\Models\Storage;
 use Illuminate\Database\Seeder;
 
-class StorageSeeder extends Seeder
-{
+class StorageSeeder extends Seeder {
+
     /**
      * Run the database seeds.
      *
@@ -14,5 +16,7 @@ class StorageSeeder extends Seeder
     public function run()
     {
         //
+        Storage::factory()->times(50)->create();
     }
+
 }

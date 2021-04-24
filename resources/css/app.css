@@ -2,9 +2,13 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import "dashboard/theme/_custom.css";
 
 
-@import "dashboard/theme/theme.css";
+
+/*@import "dashboard/theme/theme.css";*/
+
+
 
 
 

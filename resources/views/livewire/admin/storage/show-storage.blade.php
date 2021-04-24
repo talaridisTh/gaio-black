@@ -3,11 +3,10 @@
     <x-table.table>
 
         <x-slot name="head">
-
             <x-table.table-th>
                 <input x-ref="mainInput"
                        @click="selectAllCheckboxes()"
-                       type="checkbox"/>
+                       type="checkbox" />
             </x-table.table-th>
 
             <x-table.table-th>
@@ -16,10 +15,7 @@
                     Ονομα
                     <x-sort-icon :sortBy="$sortBy"
                                  :sortDirection="$sortDirection"
-                                 type="name"
-                    /></span>
-
-
+                                 type="name" /></span>
             </x-table.table-th>
 
             <x-table.table-th>
@@ -28,7 +24,7 @@
                         Μονάδα μέτρησης
                         <x-sort-icon :sortBy="$sortBy"
                                      :sortDirection="$sortDirection"
-                                     type="mm"/>
+                                     type="mm" />
                     </span>
 
             </x-table.table-th>
@@ -43,7 +39,7 @@
                         Ποσότητα
                 <x-sort-icon :sortBy="$sortBy"
                              :sortDirection="$sortDirection"
-                             type="quantity"/>
+                             type="quantity" />
                     </span>
 
 
@@ -54,7 +50,7 @@
                           class="text-gray-300 flex cursor-pointer">Created
                 <x-sort-icon :sortBy="$sortBy"
                              :sortDirection="$sortDirection"
-                             type="created_at"/>
+                             type="created_at" />
                     </span>
             </x-table.table-th>
 
@@ -63,7 +59,7 @@
                           class="text-gray-300 flex cursor-pointer">Update
                 <x-sort-icon :sortBy="$sortBy"
                              :sortDirection="$sortDirection"
-                             type="updated_at"/>
+                             type="updated_at" />
                     </span>
             </x-table.table-th>
 
@@ -75,64 +71,80 @@
 
         <x-slot name="body">
             <div class="flex justify-end  px-16">
-                <a href="{{route('users.create')}}">
-                    <button class="button w-24 mr-1 mb-2 bg-blue-700 transition ease-in duration-100 hover:bg-blue-800 text-white">
+                <a href="{{route('storage.create')}}">
+                    <button
+                     class="button w-24 mr-1 mb-2 bg-blue-700 transition ease-in duration-100 hover:bg-blue-800 text-white">
                         Create
                     </button>
                 </a>
 
             </div>
 
-                @foreach($storage as $item)
-                    <x-table.table-tr wire:key="{{ $item->id }}"  class="border border-l-0 border-r-0 border-gray-200 @if($loop->first)border-t-2 @endif">
-                        <x-table.table-td class="flex  justify-center">
-                            <label for="checkbox{{$loop->index+1}}"
-                                   class="p-thick mt-1">
-                                <input @click="checkedMainInput()"
-                                       id="checkbox{{$loop->index+1}}"
-                                       type="checkbox"/>
-                            </label>
-                        </x-table.table-td>
-                        <x-table.table-td>
-                    <span x-on:click="$dispatch('accordeon',{{$item}},console.log({{$item}}))"
+            @foreach($storage as $item)
+                <x-table.table-tr wire:key="{{ $item->id }}"
+                                  class="border border-l-0 border-r-0 border-gray-200 @if($loop->first)border-t-2 @endif">
+                    <x-table.table-td class="flex  justify-center">
+                        <label for="checkbox{{$loop->index+1}}"
+                               class="p-thick mt-1">
+                            <input @click="checkedMainInput()"
+                                   id="checkbox{{$loop->index+1}}"
+                                   type="checkbox" />
+                        </label>
+                    </x-table.table-td>
+
+                    <x-table.table-td>
+                    <span @click="$dispatch('accordeon',{{$item}},console.log({{$item}}))"
                           class="cursor-pointer text-center ml-2 font-semibold">{{$item->name}}</span>
-                        </x-table.table-td>
-                        <x-table.table-td>
-                            <span class="text-center ml-2 font-semibold">{{$item->mm}}</span>
-                        </x-table.table-td>
-                        <x-table.table-td>
-                            <span class="text-center ml-2 font-semibold">{{$item->sku}}</span>
-                        </x-table.table-td>
-                        <x-table.table-td>
-                            <span class="text-center ml-2 font-semibold">{{$item->quantity}}</span>
-                        </x-table.table-td>
-                        <x-table.table-td>
-                            <span>{{$item->created_at->format('d/m/Y')}}</span>
-                        </x-table.table-td>
-                        <x-table.table-td>
+                    </x-table.table-td>
+
+                    <x-table.table-td>
+                        <span class="text-center ml-2 font-semibold">{{$item->mm}}</span>
+                    </x-table.table-td>
+
+                    <x-table.table-td>
+                        <span class="text-center ml-2 font-semibold">{{$item->sku}}</span>
+                    </x-table.table-td>
+
+                    <x-table.table-td>
+                        <span class="text-center ml-2 font-semibold">{{$item->quantity}}</span>
+                    </x-table.table-td>
+
+                    <x-table.table-td>
+                        <span>{{$item->created_at->format('d/m/Y')}}</span>
+                    </x-table.table-td>
+
+                    <x-table.table-td>
                       <span class="">
                       {{$item->updated_at->format('d/m/Y')}}
                   </span>
-                        </x-table.table-td>
-                        <x-table.table-td>
-                      <span class="">
-                      </span>
-                        </x-table.table-td>
-                    </x-table.table-tr>
+                    </x-table.table-td>
 
-                    <x-table.table-tr x-data="{isOpen:false}"
-                                      x-show="isOpen"
-                                      @click.away="isOpen=false"
-                                      @accordeon.window="event.detail.slug==$el.id?isOpen=true:''"
-                                      id="{{$item->slug}}"
-                                      class="fold">
-                        <x-table.table-td colspan="8">
-                            <div class="flex flex-col items-start mx-36 p-5">
-                                <span class="dark:text-gray-300 text-center ml-2 font-semibold">{{$item->description}}</span>
-                            </div>
-                        </x-table.table-td>
-                    </x-table.table-tr>
-                @endforeach
+                    <x-table.table-td class="flex space-x-2">
+                        <a class="flex space-x-3" wire:ignore href="{{route('storage.update',[$item->slug])}}">
+                            <i data-feather="edit"></i>
+                        </a>
+                        <span class="flex space-x-3"   wire:click="deleteStorage({{$item->id}})">
+                            <span wire:ignore class="hover:scale-105">
+                                <i data-feather="delete"></i>
+                            </span>
+                        </span>
+                    </x-table.table-td>
+                </x-table.table-tr>
+
+                <x-table.table-tr x-data="{isOpen:false}"
+                                  x-show="isOpen"
+                                  @click.away="isOpen=false"
+                                  @accordeon.window="event.detail.slug==$el.id?isOpen=true:''"
+                                  id="{{$item->slug}}"
+                                  class="fold">
+                    <x-table.table-td colspan="8">
+                        <div class="flex flex-col items-start mx-36 p-5">
+                            <span
+                             class="dark:text-gray-300 text-center ml-2 font-semibold">{{$item->description}}</span>
+                        </div>
+                    </x-table.table-td>
+                </x-table.table-tr>
+            @endforeach
 
         </x-slot>
 

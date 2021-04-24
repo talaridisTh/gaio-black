@@ -22,6 +22,9 @@
     <link rel="stylesheet"
           href="{{mix("css/plugin.css")}}">
 
+    <link rel="stylesheet" href="https://www.unpkg.com/trix@1.3.1/dist/trix.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+
 
 @livewireStyles
 
@@ -29,7 +32,6 @@
 
 </head>
 <body class="font-sans antialiased ">
-<x-jet-banner/>
 
 <div class="min-h-screen dark:bg-gray-800 flex flex-col">
 @livewire('navigation-menu')
@@ -37,29 +39,25 @@
 <!-- Page Content -->
     <main class="flex flex-1">
         <x-sidebar-menu class="w-1/6"></x-sidebar-menu>
-
-
-            {{$slot}}
-
-
+        {{$slot}}
     </main>
 
-    <div class="mt-3 absolute bottom-10 right-5 dark:text-white"><label>Switch</label>
-        <div class="mt-2">
-            <input @click="toggle === '0' ? toggle = '1' : toggle = '0'"
-                   type="checkbox"
-                   class="input input--switch border">
-        </div>
+    <div  x-data="{show:false}"
+         x-show="show"
+         @overlay.window="show=$event.detail.overlay"
+         class="overlay-black z-40">
     </div>
+        <x-modal />
 </div>
 
-
-@stack('modals')
 @livewireScripts
 
 
 <script src="{{ mix('js/app.js') }}"></script>
 
+<script src="https://www.unpkg.com/moment@2.29.1/moment.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+<script src="https://www.unpkg.com/trix@1.3.1/dist/trix.js"></script>
 @stack('scripts')
 
 

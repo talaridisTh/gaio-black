@@ -2,8 +2,15 @@
 
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\StorageController;
+use App\Http\Livewire\Admin\Information\Information;
+use App\Http\Livewire\Admin\Storage\CreateStorage;
+use App\Http\Livewire\Admin\Storage\ShowStorage;
+use App\Http\Livewire\Admin\Storage\Storage;
+use App\Http\Livewire\Admin\Storage\UpdateStorage;
 use App\Http\Livewire\Admin\User\ShowUsers;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +25,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard');
 });
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
 })->name('dashboard');
-//Route::get('/users', ShowUsers::class);
-Route::get("/users", [UserController::class, "index"])->name("users.index");
-Route::get("/users/create", [UserController::class, "create"])->name("users.create");
-Route::get("/storage", [StorageController::class, "index"])->name("storage.index");
 
-Route::get("test",function (){
- return view("welcome");
+Route::middleware("auth:sanctum")->group(function (){
+
+    Route::get("/users", [UserController::class, "index"])->name("users.index");
+    Route::get("/users/create", [UserController::class, "create"])->name("users.create");
+
+    Route::get("/storage",ShowStorage::class)->name("storage.index");
+    Route::get("/storage/create", CreateStorage::class)->name("storage.create");
+    Route::get("/storage/add", Storage::class)->name("storage.add");
+    Route::get("/storage/remove", Storage::class)->name("storage.remove");
+    Route::get("/storage/edit/{storage}",UpdateStorage::class)->name("storage.update");
+
+
+    Route::get("/information", Information::class)->name("information.index");
 });
