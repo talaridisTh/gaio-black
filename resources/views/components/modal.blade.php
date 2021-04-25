@@ -2,7 +2,9 @@
      class="absolute z-30 bottom-1/2 -translate-x-1/3 left-1/3 -translate-y-1/2 z-50 shadow-2xl">
     <div x-data="{isOpen:false , event:[] , comment:''}"
          x-show.transition.opacity.duration.400ms="isOpen"
-         @modal.window="isOpen=true ,event=$event.detail.storages, comment=$event.detail.description"
+         @modal.window="isOpen = true,
+         event = $event.detail.sales ? $event.detail.sales : $event.detail.storages,
+         comment = $event.detail.description"
          @click.away="isOpen=false , $dispatch('overlay',{overlay:false})"
      class="border w-54rem h-96 dark:bg-gray-700 text-white p-2 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100">
         <table class="table-fixed w-full text-lg">

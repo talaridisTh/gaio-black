@@ -74,6 +74,7 @@ class Storage extends Component {
 
         return Information::create([
             "description" => $this->description,
+            "type" => "add",
             "publish_at" => Carbon::createFromFormat("d/m/Y", $this->date)->format('Y-m-d '),
         ]);
 

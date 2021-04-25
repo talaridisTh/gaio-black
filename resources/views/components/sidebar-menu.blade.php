@@ -20,6 +20,10 @@
             <a href="{{route('information.index')}}"
                class="dark:hover:text-gray-400 dark:text-white hover:text-gray-900 text-gray-500 transition ease-in duration-200">Information</a>
         </li>
+        <li>
+            <a href="{{route('sales.index')}}"
+               class="dark:hover:text-gray-400 dark:text-white hover:text-gray-900 text-gray-500 transition ease-in duration-200">Sales</a>
+        </li>
     </ul>
 
 

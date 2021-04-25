@@ -85,7 +85,8 @@ module.exports = {
                 'xxl': '1600px'
             },
             width:{
-             "54rem":"54rem"
+             "54rem":"54rem",
+             "5%":"5%"
             },
             flex: {
                 '2': '2 2 0%',

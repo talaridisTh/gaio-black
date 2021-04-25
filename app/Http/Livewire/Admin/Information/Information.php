@@ -42,7 +42,7 @@ class Information extends Component {
     {
 
         return view('livewire.admin.information.information', [
-            "information" => $this->info->with("storages")->orderBy($this->sortBy, $this->sortDirection)
+            "information" => $this->info->storageAdd()->with("storages")->orderBy($this->sortBy, $this->sortDirection)
                 ->whereBetween('publish_at', [$this->startDate, $this->endDate])
                 ->paginate($this->entries)
         ]);
