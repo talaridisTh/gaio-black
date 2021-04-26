@@ -4,13 +4,12 @@ namespace Tests\Feature;
 
 use App\Models\Information;
 use App\Models\Storage;
-use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class InformationTest extends TestCase {
+class InformationRemoveTest extends TestCase {
+
 
     use RefreshDatabase;
 
@@ -18,7 +17,7 @@ class InformationTest extends TestCase {
     public function can_see_current_date_as_default_field()
     {
 
-        Livewire::test("admin.storage.storage")
+        Livewire::test("admin.storage.remove-storage")
             ->set("date", date("d/m/Y"))
             ->assertPayloadSet("date", date('d/m/Y'));
 
@@ -31,7 +30,7 @@ class InformationTest extends TestCase {
             "id" => 1,
             "name" => "bar",
         ]);
-        Livewire::test("admin.storage.storage")
+        Livewire::test("admin.storage.remove-storage")
             ->call("fillField", 1, 0)
             ->set("quantity.0", 5)
             ->set("description", "foo")
@@ -48,7 +47,7 @@ class InformationTest extends TestCase {
             "id" => 1,
             "name" => "bar",
         ]);
-        Livewire::test("admin.storage.storage")
+        Livewire::test("admin.storage.remove-storage")
             ->call("fillField", 1, 0)
             ->set("quantity.0", 5)
             ->set("date", date("d/m/Y"))
@@ -65,7 +64,7 @@ class InformationTest extends TestCase {
             "id" => 1,
             "name" => "bar",
         ]);
-        Livewire::test("admin.storage.storage")
+        Livewire::test("admin.storage.remove-storage")
             ->call("fillField", 1, 0)
             ->set("quantity.0", 5)
             ->set("description", "foo")
@@ -81,7 +80,7 @@ class InformationTest extends TestCase {
             "id" => 1,
             "name" => "bar",
         ]);
-        Livewire::test("admin.storage.storage")
+        Livewire::test("admin.storage.remove-storage")
             ->call("fillField", 1, 0)
             ->set("quantity.0", 5)
             ->set("description", "foo")
@@ -97,7 +96,7 @@ class InformationTest extends TestCase {
             "id" => 1,
             "name" => "bar",
         ]);
-        Livewire::test("admin.storage.storage")
+        Livewire::test("admin.storage.remove-storage")
             ->call("fillField", 1, 0)
             ->set("quantity.0", 5)
             ->set("date", date("d/m/Y"))
@@ -111,20 +110,23 @@ class InformationTest extends TestCase {
         Storage::factory()->create([
             "id" => 1,
             "name" => "bar",
+            "price"=>5,
+            "quantity"=>10
         ]);
-        Livewire::test("admin.storage.storage")
+        Livewire::test("admin.storage.remove-storage")
             ->call("fillField", 1, 0)
             ->set("quantity.0", 5)
             ->set("date", date("d/m/Y"))
+            ->call("totalUpdate",0)
             ->call("addProduct");
-        $this->assertTrue(Information::where("id", 1)->first()->storages()->first()->quantity == 5);
+        $this->assertTrue(Information::where("id", 1)->first()->sales()->first()->quantity == 5);
     }
 
     /** @test */
     public function can_count_product_in_one_order()
     {
         Storage::factory()->count(10)->create();
-        Livewire::test("admin.storage.storage")
+        Livewire::test("admin.storage.remove-storage")
             ->call("fillField", 1, 0)
             ->call("fillField", 2, 1)
             ->call("fillField", 3, 2)
@@ -133,14 +135,14 @@ class InformationTest extends TestCase {
             ->set("quantity.2", 5)
             ->set("date", date("d/m/Y"))
             ->call("addProduct");
-        $this->assertTrue(Information::where("id", 1)->first()->storages()->count() == 3);
+        $this->assertTrue(Information::where("id", 1)->first()->sales()->count() == 3);
     }
 
     /** @test */
     public function can_create_two_information()
     {
         Storage::factory()->count(10)->create();
-        Livewire::test("admin.storage.storage")
+        Livewire::test("admin.storage.remove-storage")
             ->call("fillField", 1, 0)
             ->set("quantity.0", 5)
             ->set("date", date("d/m/Y"))

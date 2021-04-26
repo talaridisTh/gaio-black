@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d1c4401-eecb-458c-9c32-003bae39cea2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Information/Information.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Information/Information.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Storage/RemoveStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Storage/RemoveStorage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Storage/Storage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Storage/Storage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Information.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Information.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_30_210115_create_information_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_30_210115_create_information_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/sidebar-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/sidebar-menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/dashboard/theme/_custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/dashboard/theme/_custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/storage/remove-storage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/storage/remove-storage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/InformationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/InformationTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +181,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vida24api/vida24-api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../backup/vue-/blog" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.laravel_idea.plugin.extension.a.f" />
@@ -205,11 +200,25 @@
       <command value="php artisan make:model Information mcsf" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.StorageRemoveTest.can_see_livewire_component_on_add_storage_page">
+    <configuration name="StorageRemoveTest.can_fill_correct_mm_when_select_an_name" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\StorageRemoveTest" file="$PROJECT_DIR$/tests/Feature/StorageRemoveTest.php" method="can_fill_correct_mm_when_select_an_name" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="StorageRemoveTest.can_see_livewire_component_on_add_storage_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\StorageRemoveTest" file="$PROJECT_DIR$/tests/Feature/StorageRemoveTest.php" method="can_see_livewire_component_on_add_storage_page" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.StorageRemoveTest.can_see_livewire_component_on_add_storage_page" />
+        <item itemvalue="PHPUnit.StorageRemoveTest.can_fill_correct_mm_when_select_an_name" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -255,6 +264,8 @@
       <workItem from="1618949093595" duration="4875000" />
       <workItem from="1618988367138" duration="30000" />
       <workItem from="1619256411570" duration="26455000" />
+      <workItem from="1619418609196" duration="13000" />
+      <workItem from="1619453743525" duration="12390000" />
     </task>
     <task id="LOCAL-00001" summary="feat: create accordion and fix order&#10;&#10;BREAKING CHANGE: li has an issue because livewire cant keep order of li while it is inside foreach this issue can fixed puttin wire:key">
       <created>1615686158670</created>

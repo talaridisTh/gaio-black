@@ -54,20 +54,15 @@ class RemoveStorage extends Component {
 
     public function totalUpdate($key)
     {
-        if ($this->quantity[$this->row] == '') {
+
+        if ($this->quantity[$this->row] == '' || $this->offer[$this->row] === '' || $this->price[$this->row] === '') {
             $this->total[$key] = 0;
+
             return;
         }
         if (isset($this->total[$this->row])) {
-            $this->total[$key] = $this->quantity[$key] * $this->price[$key];
+            $this->total[$key] = $this->quantity[$key] * $this->price[$key] - $this->quantity[$key] * $this->price[$key] * ($this->offer[$this->row] / 100);
         }
-    }
-
-    public function updatedOffer()
-    {
-
-        $this->total[$this->this] = 2;
-
     }
 
     public function addProduct()
@@ -75,6 +70,7 @@ class RemoveStorage extends Component {
 
         $this->validate([
             'quantity.*' => 'required|numeric|gt:0',
+            'price.*' => 'required|numeric|gt:0',
         ]);
         if (!empty($this->name)) {
             $information = $this->addInformation();
