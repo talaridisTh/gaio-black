@@ -39,15 +39,20 @@
 <!-- Page Content -->
     <main class="flex flex-1">
         <x-sidebar-menu class="w-1/6"></x-sidebar-menu>
-        {{$slot}}
+
+        <section class="flex flex-col w-full">
+            <x-top-bar />
+            {{$slot}}
+        </section>
     </main>
 
-    <div  x-data="{show:false}"
+    <div x-data="{show:false}"
          x-show="show"
          @overlay.window="show=$event.detail.overlay"
          class="overlay-black z-40">
     </div>
-        <x-modal />
+
+    <x-modal />
 </div>
 
 @livewireScripts

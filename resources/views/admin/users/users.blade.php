@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class=" w-5/6">
+    <div>
         <livewire:admin.user.show-users/>
     </div>
 </x-app-layout>

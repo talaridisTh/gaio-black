@@ -45,4 +45,9 @@ Route::middleware("auth:sanctum")->group(function (){
 
     Route::get("/information", Information::class)->name("information.index");
     Route::get("/sales", Sales::class)->name("sales.index");
+
+    Route::post("/user/excel-upload", [UserController::class,"userImport"])->name("user.upload");
+
+
+
 });
