@@ -17,6 +17,7 @@ class CreateInformationTable extends Migration
             $table->id();
             $table->text("description");
             $table->string("type")->nullable();
+            $table->integer("total");
             $table->timestamps();
             $table->date("publish_at")->nullable();
         });

@@ -427,6 +427,30 @@ class StorageRemoveTest extends TestCase {
             ->assertSet("total.0",12.5);
     }
 
+    /** @test */
+    public function can_fill_totalall()
+    {
+        Storage::factory()->create([
+            "id" => 1,
+            "name" => "bar",
+            "price" => 5,
+        ]);
+        Storage::factory()->create([
+            "id" => 2,
+            "name" => "foo",
+            "price" => 5,
+        ]);
+        Livewire::test("admin.storage.remove-storage")
+            ->call("fillField", 1, 0)
+            ->set("quantity.0",5)
+            ->call("totalUpdate",0)
+            ->call("plusRow")
+            ->call("fillField", 2, 1)
+            ->set("quantity.1",5)
+            ->call("totalUpdate",1)
+            ->assertSet("totalAll",50);
+    }
+
 
 
 //todo na to dw otan dw ta videok

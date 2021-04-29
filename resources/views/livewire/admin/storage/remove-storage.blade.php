@@ -4,7 +4,6 @@
         @error('quantity.*') <span class="text-red-500">{{ $message }}</span> @enderror
     </div>
 
-
     <div class="max-w-7xl mx-auto flex space-x-10">
         <div class="flex-2" wire:ignore>
             <trix-editor wire:model.defer="description" input="rich-editor" class="text-white"></trix-editor>
@@ -106,6 +105,9 @@
             <x-notification.update message="Συμπληροστε στο κενο πεδιο" notify-event="event-plus-row" />
         </button>
 
+    </div>
+    <div class="max-w-6xl mx-auto flex justify-end text-green-600 font-semibold text-lg">
+        <p>Σύνολο : @money($totalAll)</p>
     </div>
     <div class="flex max-w-7xl mx-auto mt-10 justify-end items-center space-x-3">
         <x-notification.update notify-event="event-product" />

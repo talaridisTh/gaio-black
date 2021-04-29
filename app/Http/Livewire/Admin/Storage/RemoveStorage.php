@@ -20,6 +20,7 @@ class RemoveStorage extends Component {
     public $row = 0;
     public $key = 0;
     public $this = 0;
+    public $totalAll = 0;
 
     public function fillField($storage, $key)
     {
@@ -52,16 +53,20 @@ class RemoveStorage extends Component {
 
     }
 
+
     public function totalUpdate($key)
     {
-
-        if ($this->quantity[$this->row] == '' || $this->offer[$this->row] === '' || $this->price[$this->row] === '') {
+        $this->totalAll = 0;
+        if ($this->quantity[$key] === '' || $this->offer[$key] === '' || $this->price[$key] === '') {
             $this->total[$key] = 0;
 
             return;
         }
-        if (isset($this->total[$this->row])) {
+        if (isset($this->total[$key])) {
             $this->total[$key] = $this->quantity[$key] * $this->price[$key] - $this->quantity[$key] * $this->price[$key] * ($this->offer[$this->row] / 100);
+            foreach ($this->total as $total){
+                $this->totalAll += $total;
+            }
         }
     }
 
@@ -97,6 +102,7 @@ class RemoveStorage extends Component {
         return Information::create([
             "description" => $this->description,
             "type" => "remove",
+            "total" => $this->totalAll,
             "publish_at" => Carbon::createFromFormat("d/m/Y", $this->date)->format('Y-m-d '),
         ]);
 
@@ -115,6 +121,7 @@ class RemoveStorage extends Component {
         $this->row = 0;
         $this->key = 0;
         $this->title = 0;
+        $this->totalAll = 0;
     }
 
     public function resetField($row)
