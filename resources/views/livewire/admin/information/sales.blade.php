@@ -53,6 +53,12 @@
                     </span>
             </x-table.table-th>
 
+            <x-table.table-th>
+                    <span class="text-gray-300 flex cursor-pointer">
+                        Συνολο
+                    </span>
+            </x-table.table-th>
+
 
             <x-table.table-th>
                     <span wire:click="sortBy('publish_at')"
@@ -90,6 +96,10 @@
 
                     <x-table.table-td>
                         <span class="text-center ml-2 font-semibold">{{$item->sales->count()}}</span>
+                    </x-table.table-td>
+
+                    <x-table.table-td>
+                        <span class="text-center ml-2 font-semibold">@money($item->total)</span>
                     </x-table.table-td>
 
                     <x-table.table-td>

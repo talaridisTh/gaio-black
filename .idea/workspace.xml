@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d1c4401-eecb-458c-9c32-003bae39cea2" name="Default Changelist" comment="">
+    <list default="true" id="9d1c4401-eecb-458c-9c32-003bae39cea2" name="Default Changelist" comment="style: change names of sidebar">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Storage/RemoveStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Storage/RemoveStorage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_30_210115_create_information_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_30_210115_create_information_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/storage/remove-storage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/storage/remove-storage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/StorageRemoveTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/StorageRemoveTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/information/sales.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/information/sales.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
